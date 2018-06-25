@@ -304,9 +304,6 @@ while getopts ":b:m:n:h" opt; do
 done
 shift $((OPTIND - 1))
 
-[ -z "$mirrors" ] && mirrors=$(get_worldwide_mirrors)
-
-
 if is_openvz; then
 	bootloader=none
 	network=netctl
