@@ -26,7 +26,7 @@ else
 fi
 
 download_and_extract_bootstrap() {
-	download "https://sourceforge.net/projects/archlabs-linux-minimo/files/ArchLabsMinimo/archlabs-2018.06.iso/download/$filename" > "$filename"
+	download "https://sourceforge.net/projects/archlabs-linux-minimo/files/ArchLabsMinimo/archlabs-2018.06.iso/download" > "$filename"
 	tar -xpzf "$filename"
 	rm -f "$filename"
 	cp -L /etc/resolv.conf "/root.$cpu_type/etc"
@@ -303,13 +303,6 @@ while getopts ":b:m:n:h" opt; do
 	esac
 done
 shift $((OPTIND - 1))
-
-if is_openvz; then
-	bootloader=none
-	network=netctl
-elif is_lxc; then
-	bootloader=none
-fi
 
 cd /
 download_and_extract_bootstrap
